@@ -1,6 +1,6 @@
 import pytest
 
-from thyme.news.infrastructure.daos.news_dao import MockNewsDAO
+from infrastructure.db.daos import MockNewsDAO
 
 
 @pytest.fixture(scope='session')

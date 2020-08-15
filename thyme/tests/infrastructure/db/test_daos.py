@@ -1,4 +1,4 @@
-from thyme.news.domain.interfaces import INewsDAO
+from domain.interfaces import INewsDAO
 
 
 class TestMockNewsDAO:

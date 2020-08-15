@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
 
-from thyme.news.domain.entities import NewsEntity
+from domain.entities import NewsEntity
 
 
 class INewsDAO(ABC):
