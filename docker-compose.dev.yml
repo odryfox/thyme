@@ -7,9 +7,10 @@ services:
       - "5000:5000"
     volumes:
       - ./thyme:/code
-    command: python manage_web.py
     depends_on:
       - postgres
+    environment:
+      DATABASE_URL: "postgresql://postgres:pass@postgres:5432/thyme"
 
   postgres:
     image: postgres

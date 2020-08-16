@@ -8,4 +8,4 @@ WORKDIR /code
 RUN pip install -r requirements.txt
 RUN pip install -r requirements-test.txt
 
-CMD ["python", "manage_web.py"]
+ENTRYPOINT ["sh", "./entrypoint.sh"]
