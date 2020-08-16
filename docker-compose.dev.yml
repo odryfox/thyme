@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  web:
+    build: ./thyme
+    ports:
+      - "5000:5000"
+    command: python manage_web.py
+    volumes:
+    - ./thyme:/code

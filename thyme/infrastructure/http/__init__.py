@@ -13,7 +13,7 @@ class WebApp:
 
         views_kwargs = {"web_app": self}
         add = self.app.add_url_rule
-        add('/', view_func=NewsView.as_view("name", **views_kwargs))
+        add("/", view_func=NewsView.as_view("name", **views_kwargs))
 
     def run(self):
-        self.app.run()
+        self.app.run(host="0.0.0.0")
