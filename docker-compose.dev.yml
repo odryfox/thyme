@@ -5,6 +5,20 @@ services:
     build: ./thyme
     ports:
       - "5000:5000"
-    command: python manage_web.py
     volumes:
-    - ./thyme:/code
+      - ./thyme:/code
+    command: python manage_web.py
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - "15432:5432"
+    volumes:
+      - ./tmp/data/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: thyme
