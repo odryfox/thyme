@@ -23,6 +23,13 @@ class DBNewsDAO(INewsDAO):
             content=news_orm.content,
         )
 
+    def create(self, name: str, content: str) -> NewsEntity:
+        news_orm = NewsORM(name=name, content=content)
+        self.session.add(news_orm)
+        self.session.commit()
+        news_entity = self._news_orm_to_news_entity(news_orm)
+        return news_entity
+
     def get_news(self) -> List[NewsEntity]:
         news_orm = self.session.query(NewsORM).all()
         news_entities = [self._news_orm_to_news_entity(n) for n in news_orm]
