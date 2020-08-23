@@ -1,0 +1,8 @@
+[run]
+omit = tests/*
+
+[tool:pytest]
+addopts = --cov=domain --cov=infrastructure --cov-report html
+
+[coverage:report]
+skip_empty = true
