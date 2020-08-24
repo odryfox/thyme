@@ -1,7 +1,7 @@
 from domain.usecases.news import GetNewsUseCase
 from infrastructure.config import Config
 from infrastructure.db.connection import DB
-from infrastructure.db.daos import MockNewsDAO, DBNewsDAO
+from infrastructure.db.daos import DBNewsDAO
 from infrastructure.http import create_flask_app
 
 
@@ -9,12 +9,11 @@ class WebApp:
     def __init__(self, name: str, config: Config):
         db = DB(url=config.DATABASE_URL)
         session = db.create_session()
-        DBNewsDAO(session=session)
+        db_news_dao = DBNewsDAO(session=session)
 
         self.DEBUG = config.DEBUG
 
-        news_dao = MockNewsDAO()
-        self.get_news_usecase = GetNewsUseCase(news_dao=news_dao)
+        self.get_news_usecase = GetNewsUseCase(news_dao=db_news_dao)
 
         self.app = create_flask_app(name, self)
 
