@@ -20,7 +20,7 @@ fileConfig(config.config_file_name)
 
 # add your model's MetaData object here
 # for 'autogenerate' support
-# from myapp import mymodel
+# from myapp external mymodel
 # target_metadata = mymodel.Base.metadata
 
 # TODO: fix it

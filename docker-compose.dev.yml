@@ -12,6 +12,7 @@ services:
     environment:
       DATABASE_URL: "postgresql://postgres:pass@postgres:5432/thyme"
       DEBUG: "True"
+      NEWS_API_KEY: "${NEWS_API_KEY}"
 
   postgres:
     image: postgres
