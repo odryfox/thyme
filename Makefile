@@ -7,8 +7,7 @@ up:
 down:
 	docker-compose -f docker-compose.dev.yml down -v
 
-start:
-	build up
+start: build up
 
 isort:
 	isort .
