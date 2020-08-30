@@ -1,5 +1,4 @@
 from flask import Flask
-
 from infrastructure.http.api import ApiNewsView
 from infrastructure.http.views import NewsView
 

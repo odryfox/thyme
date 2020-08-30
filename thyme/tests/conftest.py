@@ -1,11 +1,9 @@
 import pytest
-from sqlalchemy_utils import database_exists, drop_database, create_database
-
-from infrastructure.db.connection import DB
-from infrastructure.db.daos import MockNewsDAO, DBNewsDAO
-from alembic.config import Config as AlembicConfig
 from alembic.command import upgrade as alembic_upgrade
-
+from alembic.config import Config as AlembicConfig
+from infrastructure.db.connection import DB
+from infrastructure.db.daos import DBNewsDAO, MockNewsDAO
+from sqlalchemy_utils import create_database, database_exists, drop_database
 
 DATABASE_URL = "postgresql://postgres:pass@postgres:5432/thyme_test"
 

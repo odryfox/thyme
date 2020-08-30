@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
 
-from domain.entities import NewsEntity, ExternalNewsEntity
+from domain.entities import ExternalNewsEntity, NewsEntity
 
 
 class INewsDAO(ABC):

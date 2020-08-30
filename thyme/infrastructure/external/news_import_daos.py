@@ -1,7 +1,6 @@
 from typing import Dict, List
 
 import requests
-
 from domain.entities import ExternalNewsEntity
 from domain.interfaces import IExternalNewsDAO
 

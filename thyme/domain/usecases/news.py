@@ -1,7 +1,7 @@
 from typing import List
 
 from domain.entities import NewsEntity
-from domain.interfaces import INewsDAO, IExternalNewsDAO
+from domain.interfaces import IExternalNewsDAO, INewsDAO
 
 
 class GetNewsUseCase:

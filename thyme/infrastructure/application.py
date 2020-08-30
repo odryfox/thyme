@@ -2,8 +2,8 @@ from domain.usecases.news import GetNewsUseCase, ImportNewsUseCase
 from infrastructure.config import Config
 from infrastructure.db.connection import DB
 from infrastructure.db.daos import DBNewsDAO
-from infrastructure.http import create_flask_app
 from infrastructure.external.news_import_daos import ExternalNewsAPIDAO
+from infrastructure.http import create_flask_app
 
 
 class WebApp:

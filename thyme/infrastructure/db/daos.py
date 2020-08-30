@@ -1,10 +1,9 @@
 from typing import List
 
-from sqlalchemy.orm import Session
-
 from domain.entities import NewsEntity
 from domain.interfaces import INewsDAO
 from infrastructure.db.models import NewsORM
+from sqlalchemy.orm import Session
 
 
 class MockNewsDAO(INewsDAO):
