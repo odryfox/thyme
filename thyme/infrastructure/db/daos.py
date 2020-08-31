@@ -7,9 +7,16 @@ from sqlalchemy.orm import Session
 
 
 class MockNewsDAO(INewsDAO):
+    def __init__(self):
+        self._news = []
+
     def get_news(self) -> List[NewsEntity]:
-        news = [NewsEntity(name='name', content='content')]
-        return news
+        return self._news
+
+    def create(self, name: str, content: str) -> NewsEntity:
+        news_entity = NewsEntity(name=name, content=content)
+        self._news.append(news_entity)
+        return news_entity
 
 
 class DBNewsDAO(INewsDAO):

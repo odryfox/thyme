@@ -1,8 +1,12 @@
+from http.client import responses
+from unittest.mock import Mock
+
 import pytest
 from alembic.command import upgrade as alembic_upgrade
 from alembic.config import Config as AlembicConfig
 from infrastructure.db.connection import DB
 from infrastructure.db.daos import DBNewsDAO, MockNewsDAO
+from infrastructure.external.news_import_daos import ExternalNewsAPIDAO
 from sqlalchemy_utils import create_database, database_exists, drop_database
 
 DATABASE_URL = "postgresql://postgres:pass@postgres:5432/thyme_test"
@@ -46,6 +50,11 @@ def db_news_dao(session):
     yield DBNewsDAO(session=session)
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def mock_news_dao():
     return MockNewsDAO()
+
+
+@pytest.fixture(scope="session")
+def external_news_dao():
+    return ExternalNewsAPIDAO(api_key="test")
