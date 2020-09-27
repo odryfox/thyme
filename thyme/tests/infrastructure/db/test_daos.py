@@ -1,30 +1,21 @@
-from domain.interfaces import INewsDAO
-from infrastructure.db.daos import DBNewsDAO
+from datetime import date, time
+
+from infrastructure.db.daos import DBTasksDAO
 
 
-class TestMockNewsDAO:
-    def test_get_news(self, mock_news_dao: INewsDAO):
+class TestDBTasksDAO:
+    def test_get_tasks(self, db_tasks_dao: DBTasksDAO):
         name = "name"
-        content = "content"
+        status = "status"
+        date_start = date(2020, 12, 13)
+        time_start = time(15, 45, 00)
 
-        mock_news_dao.create(name=name, content=content)
+        db_tasks_dao.create(name=name, status=status, date_start=date_start, time_start=time_start)
 
-        news = mock_news_dao.get_news()
+        tasks = db_tasks_dao.get_list()
 
-        assert len(news) == 1
-        assert news[0].name == name
-        assert news[0].content == content
-
-
-class TestDBNewsDAO:
-    def test_get_news(self, db_news_dao: DBNewsDAO):
-        name = "name"
-        content = "content"
-
-        db_news_dao.create(name=name, content=content)
-
-        news = db_news_dao.get_news()
-
-        assert len(news) == 1
-        assert news[0].name == name
-        assert news[0].content == content
+        assert len(tasks) == 1
+        assert tasks[0].name == name
+        assert tasks[0].status == status
+        assert tasks[0].date_start == date_start
+        assert tasks[0].time_start == time_start

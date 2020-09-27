@@ -1,42 +1,33 @@
+from datetime import date, time
 from typing import List
 
-from domain.entities import NewsEntity
-from domain.interfaces import INewsDAO
-from infrastructure.db.models import NewsORM
+from domain.entities import TaskEntity
+from domain.interfaces import ITasksDAO
+from infrastructure.db.models import TaskORM
 from sqlalchemy.orm import Session
 
 
-class MockNewsDAO(INewsDAO):
-    def __init__(self):
-        self._news = []
-
-    def get_news(self) -> List[NewsEntity]:
-        return self._news
-
-    def create(self, name: str, content: str) -> NewsEntity:
-        news_entity = NewsEntity(name=name, content=content)
-        self._news.append(news_entity)
-        return news_entity
-
-
-class DBNewsDAO(INewsDAO):
+class DBTasksDAO(ITasksDAO):
     def __init__(self, session: Session):
         self.session = session
 
-    def _news_orm_to_news_entity(self, news_orm: NewsORM):
-        return NewsEntity(
-            name=news_orm.name,
-            content=news_orm.content,
+    def _task_orm_to_entity(self, task_orm: TaskORM):
+        return TaskEntity(
+            id=task_orm.id,
+            name=task_orm.name,
+            status=task_orm.status,
+            date_start=task_orm.date_start,
+            time_start=task_orm.time_start,
         )
 
-    def create(self, name: str, content: str) -> NewsEntity:
-        news_orm = NewsORM(name=name, content=content)
-        self.session.add(news_orm)
-        self.session.commit()
-        news_entity = self._news_orm_to_news_entity(news_orm)
-        return news_entity
+    def get_list(self) -> List[TaskEntity]:
+        tasks_orm = self.session.query(TaskORM).all()
+        task_entities = [self._task_orm_to_entity(task_orm) for task_orm in tasks_orm]
+        return task_entities
 
-    def get_news(self) -> List[NewsEntity]:
-        news_orm = self.session.query(NewsORM).all()
-        news_entities = [self._news_orm_to_news_entity(n) for n in news_orm]
-        return news_entities
+    def create(self, name: str, status: str, date_start: date, time_start: time) -> TaskEntity:
+        task_orm = TaskORM(name=name, status=status, date_start=date_start, time_start=time_start)
+        self.session.add(task_orm)
+        self.session.commit()
+        task_entity = self._task_orm_to_entity(task_orm)
+        return task_entity

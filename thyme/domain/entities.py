@@ -1,14 +1,11 @@
 from dataclasses import dataclass
+from datetime import date, time
 
 
 @dataclass
-class NewsEntity:
+class TaskEntity:
+    id: int
     name: str
-    content: str
-
-
-@dataclass
-class ExternalNewsEntity:
-    id: str
-    name: str
-    content: str
+    status: str
+    date_start: date
+    time_start: time

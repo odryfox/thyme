@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restful import Api
-from infrastructure.http.api import ApiNewsResource
-from infrastructure.http.views import NewsView
+from infrastructure.http.api import ApiTasksResource
+from infrastructure.http.views import TasksView
 
 
 def create_flask_app(name, thyme_web_app) -> Flask:
@@ -10,6 +10,6 @@ def create_flask_app(name, thyme_web_app) -> Flask:
 
     views_kwargs = {"web_app": thyme_web_app}
     add = app.add_url_rule
-    add("/", view_func=NewsView.as_view("news", **views_kwargs))
-    api.add_resource(ApiNewsResource, '/', resource_class_kwargs=views_kwargs)
+    add("/", view_func=TasksView.as_view("tasks", **views_kwargs))
+    api.add_resource(ApiTasksResource, '/', resource_class_kwargs=views_kwargs)
     return app

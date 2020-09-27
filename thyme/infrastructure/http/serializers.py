@@ -1,10 +1,13 @@
 from marshmallow import Schema, fields
 
 
-class NewsSchema(Schema):
+class TaskSchema(Schema):
+    id = fields.Integer()
     name = fields.Str()
-    content = fields.Str()
+    status = fields.Str()
+    date_start = fields.Date()
+    time_start = fields.Time()
 
 
-news_schema = NewsSchema()
-news_list_schema = NewsSchema(many=True)
+task_schema = TaskSchema()
+tasks_schema = TaskSchema(many=True)
