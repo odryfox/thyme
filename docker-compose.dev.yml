@@ -9,6 +9,8 @@ services:
       - ./thyme:/code
     depends_on:
       - postgres
+    restart: always
+    command: bash -c "/usr/wait-for-it.sh --timeout=0 postgres:5432 && alembic upgrade head && python manage_web.py"
     environment:
       DATABASE_URL: "postgresql://postgres:pass@postgres:5432/thyme"
       DEBUG: "True"

@@ -8,4 +8,5 @@ WORKDIR /code
 RUN pip install -r requirements.txt
 RUN pip install -r requirements-test.txt
 
-ENTRYPOINT ["sh", "./entrypoint.sh"]
+COPY wait-for-it.sh /usr/wait-for-it.sh
+RUN chmod +x /usr/wait-for-it.sh
