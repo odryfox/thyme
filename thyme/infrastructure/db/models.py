@@ -1,15 +1,8 @@
-import enum
-
+from domain.constants import TaskStatusEnum
 from sqlalchemy import Column, Date, Enum, Integer, String, Time
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
-
-
-class Statuses(enum.Enum):
-    created = "created"
-    done = "done"
-    decline = "decline"
 
 
 class TaskORM(Base):
@@ -18,7 +11,7 @@ class TaskORM(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
 
-    status = Column(Enum(Statuses), nullable=False)
+    status = Column(Enum(TaskStatusEnum), nullable=False)
 
     date_start = Column(Date, nullable=False)
     time_start = Column(Time, nullable=False)
