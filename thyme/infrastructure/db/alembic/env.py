@@ -23,10 +23,9 @@ fileConfig(config.config_file_name)
 
 # TODO: fix it
 import sys
+sys.path.append('/code')
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.append(BASE_DIR)
-from models import Base
+from infrastructure.db.models import Base
 
 target_metadata = Base.metadata
 
