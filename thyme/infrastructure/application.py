@@ -1,4 +1,4 @@
-from domain.usecases.tasks import GetTasksUseCase
+from domain.usecases.tasks import CreateTaskUseCase, GetTasksUseCase
 from infrastructure.config import Config
 from infrastructure.db.connection import DB
 from infrastructure.db.daos import DBTasksDAO
@@ -14,6 +14,7 @@ class WebApp:
         self.DEBUG = config.DEBUG
 
         self.get_tasks_usecase = GetTasksUseCase(tasks_dao=db_tasks_dao)
+        self.create_tasks_usecase = CreateTaskUseCase(tasks_dao=db_tasks_dao)
 
         self.app = create_flask_app(name, self)
 

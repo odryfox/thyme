@@ -5,7 +5,8 @@ from infrastructure.db.daos import DBTasksDAO
 
 
 class TestDBTasksDAO:
-    def test_get_tasks(self, db_tasks_dao: DBTasksDAO):
+
+    def test_create_and_get_tasks(self, db_tasks_dao: DBTasksDAO):
         name = "name"
         status = TaskStatusEnum.created
         date_start = date(2020, 12, 13)

@@ -5,6 +5,10 @@
 </head>
 <body>
     <h1>Tasks</h1>
+    <form action="/" method="POST">
+        <input name="name"/>
+        <input type="submit" value="Add task">
+    </form>
     <ul>
     {% for task in tasks %}
         <li>{{ task.name }}</a></li>
