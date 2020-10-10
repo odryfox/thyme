@@ -1,3 +1,4 @@
+from fastapi import FastAPI
 from flask import Flask
 from flask_restful import Api
 from infrastructure.http.api import ApiTasksResource
@@ -12,4 +13,9 @@ def create_flask_app(name, thyme_web_app) -> Flask:
     add = app.add_url_rule
     add("/", view_func=TasksView.as_view("tasks", **views_kwargs))
     api.add_resource(ApiTasksResource, '/', resource_class_kwargs=views_kwargs)
+    return app
+
+
+def create_api_app(name, thyme_web_app):
+    app = FastAPI()
     return app

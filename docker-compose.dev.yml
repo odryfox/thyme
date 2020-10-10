@@ -15,6 +15,20 @@ services:
       DATABASE_URL: "postgresql://postgres:pass@postgres:5432/thyme"
       DEBUG: "True"
 
+  api:
+    build: ./thyme
+    ports:
+      - "6000:6000"
+    volumes:
+      - ./thyme:/code
+    depends_on:
+      - postgres
+    restart: always
+    command: bash -c "/usr/wait-for-it.sh --timeout=0 postgres:5432 && alembic upgrade head && uvicorn manage_api:app --reload"
+    environment:
+      DATABASE_URL: "postgresql://postgres:pass@postgres:5432/thyme"
+      DEBUG: "True"
+
   postgres:
     image: postgres
     restart: always

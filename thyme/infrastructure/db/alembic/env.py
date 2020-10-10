@@ -23,6 +23,7 @@ fileConfig(config.config_file_name)
 
 # TODO: fix it
 import sys
+
 sys.path.append('/code')
 
 from infrastructure.db.models import Base
