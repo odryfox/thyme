@@ -18,13 +18,13 @@ services:
   api:
     build: ./thyme
     ports:
-      - "6000:6000"
+      - "8000:8000"
     volumes:
       - ./thyme:/code
     depends_on:
       - postgres
     restart: always
-    command: bash -c "/usr/wait-for-it.sh --timeout=0 postgres:5432 && alembic upgrade head && uvicorn manage_api:app --reload"
+    command: bash -c "/usr/wait-for-it.sh --timeout=0 postgres:5432 && alembic upgrade head && uvicorn manage_api:app --reload --host='0.0.0.0'"
     environment:
       DATABASE_URL: "postgresql://postgres:pass@postgres:5432/thyme"
       DEBUG: "True"
