@@ -1,3 +1,4 @@
-from infrastructure.api_application import create_app
+from infrastructure.api import create_app
 
-app = create_app().app
+api_app = create_app()
+app = api_app.app

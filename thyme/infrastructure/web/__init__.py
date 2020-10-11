@@ -1,8 +1,22 @@
 from domain.usecases.tasks import CreateTaskUseCase, GetTasksUseCase
-from infrastructure.config import Config
+from flask import Flask
+from flask_restful import Api
 from infrastructure.db.connection import DB
 from infrastructure.db.daos import DBTasksDAO
-from infrastructure.http import create_flask_app
+from infrastructure.web.api import ApiTasksResource
+from infrastructure.web.config import Config
+from infrastructure.web.views import TasksView
+
+
+def create_flask_app(name, thyme_web_app) -> Flask:
+    app = Flask(name, template_folder="infrastructure/web/templates")
+    api = Api(app, prefix='/api')
+
+    views_kwargs = {"web_app": thyme_web_app}
+    add = app.add_url_rule
+    add("/", view_func=TasksView.as_view("tasks", **views_kwargs))
+    api.add_resource(ApiTasksResource, '/', resource_class_kwargs=views_kwargs)
+    return app
 
 
 class WebApp:
@@ -22,5 +36,5 @@ class WebApp:
         self.app.run(host="0.0.0.0", debug=self.DEBUG)
 
 
-def create_web_app():
+def create_app():
     return WebApp(name="Thyme", config=Config())

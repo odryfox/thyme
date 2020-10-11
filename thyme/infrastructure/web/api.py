@@ -1,5 +1,5 @@
 from flask_restful import Resource
-from infrastructure.http.serializers import tasks_schema
+from infrastructure.web.serializers import tasks_schema
 
 
 class ApiTasksResource(Resource):
