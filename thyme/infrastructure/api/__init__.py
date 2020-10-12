@@ -1,19 +1,15 @@
 from domain.usecases.tasks import CreateTaskUseCase, GetTasksUseCase
-from fastapi import Depends, FastAPI
+from fastapi import FastAPI
 from infrastructure.api.config import Config
 from infrastructure.api.views import build_router
 from infrastructure.db.connection import DB
 from infrastructure.db.daos import DBTasksDAO
 
 
-def service():
-    return "service"
-
-
 def create_fast_api_app(name, thyme_api_app):
     app = FastAPI()
     app.include_router(
-        build_router(service),
+        build_router(thyme_api_app),
         prefix="/tasks",
     )
     return app
