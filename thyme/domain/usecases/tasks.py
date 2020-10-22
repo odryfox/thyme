@@ -26,3 +26,11 @@ class CreateTaskUseCase:
             date_start=now.today(), time_start=now.time(),
         )
         return task
+
+
+class DeleteTaskUseCase:
+    def __init__(self, tasks_dao: ITasksDAO):
+        self.tasks_dao = tasks_dao
+
+    def execute(self, task_id: int) -> None:
+        self.tasks_dao.delete(task_id=task_id)

@@ -32,3 +32,8 @@ class DBTasksDAO(ITasksDAO):
         self.session.commit()
         task_entity = self._task_orm_to_entity(task_orm)
         return task_entity
+
+    def delete(self, task_id: int) -> None:
+        task = self.session.query(TaskORM).get(task_id)
+        self.session.delete(task)
+        self.session.commit()

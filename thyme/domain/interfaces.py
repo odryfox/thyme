@@ -15,3 +15,7 @@ class ITasksDAO(ABC):
     @abstractmethod
     def create(self, name: str, status: TaskStatusEnum, date_start: date, time_start: time) -> TaskEntity:
         pass
+
+    @abstractmethod
+    def delete(self, task_id: int) -> None:
+        pass

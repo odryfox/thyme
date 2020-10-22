@@ -11,10 +11,13 @@
     </form>
     <ul>
     {% for task in tasks %}
-        <li>{{ task.name }}</a></li>
-        <li>{{ task.status }}</a></li>
-        <li>{{ task.date_start }}</a></li>
-        <li>{{ task.time_start }}</a></li>
+        <div>
+            <input type="checkbox">
+            {{ task.name }}
+            <form action="/{{task.id}}"  method="POST">
+                <input type="submit" value="Delete task">
+            </form>
+        </div>
     {% endfor %}
     </ul>
 </body>

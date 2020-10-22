@@ -14,3 +14,13 @@ class TasksView(MethodView):
         self.web_app.create_tasks_usecase.execute(request.form["name"])
         tasks = self.web_app.get_tasks_usecase.execute()
         return render_template("index.html", tasks=tasks)
+
+
+class TaskView(MethodView):
+    def __init__(self, web_app):
+        self.web_app = web_app
+
+    def post(self, task_id):
+        self.web_app.delete_task_usecase.execute(task_id=task_id)
+        tasks = self.web_app.get_tasks_usecase.execute()
+        return render_template("index.html", tasks=tasks)
