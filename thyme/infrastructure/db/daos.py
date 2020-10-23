@@ -37,3 +37,9 @@ class DBTasksDAO(ITasksDAO):
         task = self.session.query(TaskORM).get(task_id)
         self.session.delete(task)
         self.session.commit()
+
+    def update(self, task_id: int, status: TaskStatusEnum) -> None:
+        task = self.session.query(TaskORM).get(task_id)
+        task.status = status
+        self.session.add(task)
+        self.session.commit()

@@ -1,4 +1,4 @@
-from domain.usecases.tasks import CreateTaskUseCase, DeleteTaskUseCase, GetTasksUseCase
+from domain.usecases.tasks import CreateTaskUseCase, DeleteTaskUseCase, GetTasksUseCase, UpdateTaskUseCase
 from flask import Flask
 from flask_restful import Api
 from infrastructure.db.connection import DB
@@ -31,6 +31,7 @@ class WebApp:
         self.get_tasks_usecase = GetTasksUseCase(tasks_dao=db_tasks_dao)
         self.create_tasks_usecase = CreateTaskUseCase(tasks_dao=db_tasks_dao)
         self.delete_task_usecase = DeleteTaskUseCase(tasks_dao=db_tasks_dao)
+        self.update_task_usecase = UpdateTaskUseCase(tasks_dao=db_tasks_dao)
 
         self.app = create_flask_app(name, self)
 

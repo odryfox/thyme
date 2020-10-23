@@ -24,3 +24,8 @@ class TaskView(MethodView):
         self.web_app.delete_task_usecase.execute(task_id=task_id)
         tasks = self.web_app.get_tasks_usecase.execute()
         return render_template("index.html", tasks=tasks)
+
+    def put(self, task_id):
+        status = request.json["status"]
+        self.web_app.update_task_usecase.execute(task_id=task_id, status=status)
+        return "OK"

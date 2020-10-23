@@ -34,3 +34,11 @@ class DeleteTaskUseCase:
 
     def execute(self, task_id: int) -> None:
         self.tasks_dao.delete(task_id=task_id)
+
+
+class UpdateTaskUseCase:
+    def __init__(self, tasks_dao: ITasksDAO):
+        self.tasks_dao = tasks_dao
+
+    def execute(self, task_id: int, status: TaskStatusEnum) -> None:
+        self.tasks_dao.update(task_id=task_id, status=status)
