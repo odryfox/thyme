@@ -40,3 +40,12 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: pass
       POSTGRES_DB: thyme
+
+  frontend:
+    stdin_open: true
+    build: ./thyme-frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - /app/node_modules
+      - ./thyme-frontend:/app
