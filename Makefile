@@ -11,3 +11,6 @@ start: build up
 
 isort:
 	isort .
+
+pylint:
+	mypy thyme --ignore-missing-imports

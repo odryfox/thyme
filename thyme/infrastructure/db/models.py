@@ -1,8 +1,8 @@
 from domain.constants import TaskStatusEnum
 from sqlalchemy import Column, Date, Enum, Integer, String, Time
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.ext.declarative import DeclarativeMeta, declarative_base
 
-Base = declarative_base()
+Base: DeclarativeMeta = declarative_base()
 
 
 class TaskORM(Base):
