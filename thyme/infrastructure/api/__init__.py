@@ -7,7 +7,7 @@ from infrastructure.db.daos import DBTasksDAO
 
 
 def create_fast_api_app(name, thyme_api_app):
-    app = FastAPI()
+    app = FastAPI(description=name)
     app.include_router(
         build_router(thyme_api_app),
         prefix="/tasks",

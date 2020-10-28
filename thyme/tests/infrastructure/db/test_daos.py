@@ -3,6 +3,8 @@ from datetime import date, time
 from domain.constants import TaskStatusEnum
 from infrastructure.db.daos import DBTasksDAO
 
+# pylint: disable=no-self-use
+
 
 class TestDBTasksDAO:
 

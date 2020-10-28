@@ -1,4 +1,4 @@
-from typing import Any, Type
+from typing import Any
 
 from domain.constants import TaskStatusEnum
 from sqlalchemy import Column, Date, Enum, Integer, String, Time
@@ -19,5 +19,7 @@ class TaskORM(Base):
     time_start = Column(Time, nullable=False)
 
     def __repr__(self):
-        return f"<Task(id={self.id}, name={self.name.__repr__()}, status={self.status.__repr__()}, " \
-               f"date_start={self.date_start.__repr__()}, time_start={self.time_start.__repr__()})>"
+        return f"<Task(id={self.id}, name={self.name.__repr__()}, " \
+               f"status={self.status.__repr__()}, " \
+               f"date_start={self.date_start.__repr__()}, " \
+               f"time_start={self.time_start.__repr__()})>"

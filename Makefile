@@ -14,3 +14,6 @@ isort:
 
 mypy:
 	PYTHONPATH=thyme/ mypy .
+
+pylint:
+	PYTHONPATH=thyme/ pylint thyme/

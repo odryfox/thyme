@@ -5,6 +5,7 @@ from flask.views import MethodView
 class TasksView(MethodView):
     def __init__(self, web_app):
         self.web_app = web_app
+        super().__init__()
 
     def get(self):
         tasks = self.web_app.get_tasks_usecase.execute()
@@ -19,6 +20,7 @@ class TasksView(MethodView):
 class TaskView(MethodView):
     def __init__(self, web_app):
         self.web_app = web_app
+        super().__init__()
 
     def post(self, task_id):
         self.web_app.delete_task_usecase.execute(task_id=task_id)

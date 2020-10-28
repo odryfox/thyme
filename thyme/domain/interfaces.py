@@ -13,7 +13,10 @@ class ITasksDAO(ABC):
         pass
 
     @abstractmethod
-    def create(self, name: str, status: TaskStatusEnum, date_start: date, time_start: time) -> TaskEntity:
+    def create(
+        self, name: str, status: TaskStatusEnum,
+        date_start: date, time_start: time
+    ) -> TaskEntity:
         pass
 
     @abstractmethod

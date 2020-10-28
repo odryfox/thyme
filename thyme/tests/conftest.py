@@ -3,9 +3,12 @@ from alembic.command import upgrade as alembic_upgrade  # type: ignore
 from alembic.config import Config as AlembicConfig  # type: ignore
 from infrastructure.db.connection import DB
 from infrastructure.db.daos import DBTasksDAO
-from sqlalchemy_utils import create_database, database_exists, drop_database  # type: ignore
+from sqlalchemy_utils import (create_database, database_exists,  # type: ignore
+                              drop_database)
 
 DATABASE_URL = "postgresql://postgres:pass@postgres:5432/thyme_test"
+
+# pylint: disable=redefined-outer-name
 
 
 def migrate_db(database_url: str):
