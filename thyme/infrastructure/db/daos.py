@@ -16,7 +16,7 @@ class DBTasksDAO(ITasksDAO):
         return TaskEntity(
             id=task_orm.id,
             name=task_orm.name,
-            status=task_orm.status,
+            status=TaskStatusEnum(task_orm.status),
             date_start=task_orm.date_start,
             time_start=task_orm.time_start,
         )

@@ -9,3 +9,4 @@ responses==0.12.0
 fastapi==0.61.1
 uvicorn==0.12.1
 mypy==0.790
+sqlalchemy-stubs==0.3

@@ -1,9 +1,9 @@
 import pytest
-from alembic.command import upgrade as alembic_upgrade
-from alembic.config import Config as AlembicConfig
+from alembic.command import upgrade as alembic_upgrade  # type: ignore
+from alembic.config import Config as AlembicConfig  # type: ignore
 from infrastructure.db.connection import DB
 from infrastructure.db.daos import DBTasksDAO
-from sqlalchemy_utils import create_database, database_exists, drop_database
+from sqlalchemy_utils import create_database, database_exists, drop_database  # type: ignore
 
 DATABASE_URL = "postgresql://postgres:pass@postgres:5432/thyme_test"
 

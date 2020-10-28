@@ -1,6 +1,6 @@
 from domain.usecases.tasks import CreateTaskUseCase, DeleteTaskUseCase, GetTasksUseCase, UpdateTaskUseCase
 from flask import Flask
-from flask_restful import Api
+from flask_restful import Api  # type: ignore
 from infrastructure.db.connection import DB
 from infrastructure.db.daos import DBTasksDAO
 from infrastructure.web.api import ApiTasksResource

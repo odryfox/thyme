@@ -1,4 +1,4 @@
-from flask_restful import Resource
+from flask_restful import Resource  # type: ignore
 from infrastructure.web.serializers import tasks_schema
 
 

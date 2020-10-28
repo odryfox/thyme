@@ -2,5 +2,5 @@ import os
 
 
 class Config:
-    DATABASE_URL = os.environ.get("DATABASE_URL")
-    DEBUG = os.environ.get("DEBUG", False)
+    DATABASE_URL: str = os.environ["DATABASE_URL"]
+    DEBUG: bool = os.environ.get("DEBUG", "False") == "True"
